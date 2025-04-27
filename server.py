@@ -1,12 +1,6 @@
-import os
-import re
-import logging
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
-logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 app.add_middleware(
@@ -16,5 +10,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="../static"), name="static")
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
+# Montamos la carpeta 'static' y 'frontend' en el mismo nivel de /app
+app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/",    StaticFiles(directory="frontend", html=True), name="frontend")
