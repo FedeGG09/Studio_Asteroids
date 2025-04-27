@@ -18,5 +18,5 @@ COPY . .
 EXPOSE 8080
 
 # 7. Comando por defecto: Uvicorn sirviendo tu FastAPI app
-#    - Asume que tu servidor está en server.py y la instancia se llama `app`
-CMD ["sh", "-c", "uvicorn server:app --host 0.0.0.0 --port ${PORT:-8080}"]
+# Ahora:
+CMD ["sh", "-c", "uvicorn backend.server:app --host 0.0.0.0 --port ${PORT:-8080}"]
